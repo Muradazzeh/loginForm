@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef, useState, useEffect,useContext } from 'react'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import superagent from 'superagent';
 import base64 from 'base-64';
 import AuthContext from '../context/Auth'
@@ -9,6 +9,8 @@ function Login() {
     const {setAuth}=useContext(AuthContext)
     const userRef = useRef()
     const errRef = useRef()
+
+    let navigate=useNavigate()
 
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -113,7 +115,7 @@ try {
             <p>
                 Need an account ? <br/>
                 <span className='line'></span>
-                <a href='#' >Sign up</a>
+                <button onClick={()=> navigate('/signup')} >Sign up</button>
             </p>
         </section>
 )}
